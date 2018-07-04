@@ -7,7 +7,7 @@
 var canvas;
 var canvasContext;
 var ballx = 50;
-var ballspeedx = 10;
+var ballspeedx = 8;
 var bally = 50;
 var ballspeedy = 4;
 
@@ -15,14 +15,18 @@ var playerpad = 250;
 var AIpad = 250;
 const paddle_height = 110;
 const paddle_thickness = 9;
-var fps = 50;
+var fps = 60;
 var playerscore = 0;
 var AIscore = 0;
 
 var startscreen = true;
 var resultscreen = false;
 
-
+/*Created by :
+Chrystopher (2101685181)
+Dimas Putra Hermanto (2101660254)
+Steven (2101654812)
+*/
 
 window.onload = function() {
 	//console.log("Hello world");
@@ -137,7 +141,7 @@ function movement(){ //whole movement
 }
 
 function ballreset(){ /*Reset the ball position after player or AI getting the score*/
-	if(playerscore==6 || AIscore==6 ){
+	if(playerscore==7 || AIscore==7 ){
 		resultscreen = true;
 	}
 
@@ -160,22 +164,22 @@ function draw(){ /*Drawing the whole game movement*/
 	}
 
 	if(resultscreen){
-		if(playerscore == 6){
+		if(playerscore == 7){
 			canvasContext.fillStyle = 'cyan';
 			canvasContext.font = "bold 35px Comic Sans MS";
 			canvasContext.fillText("Player Wins! ",canvas.width/2-80,200);
-		}else if(AIscore == 6){
+		}else if(AIscore == 7){
 			canvasContext.fillStyle = 'red';
 			canvasContext.font = "bold 35px Comic Sans MS";
-			canvasContext.fillText("AI Wins! ",canvas.width/2-80,200);
+			canvasContext.fillText("Computer Wins! ",canvas.width/2-80,200);
 		}
 
 		canvasContext.fillStyle = 'white';
 		canvasContext.font = "25px Comic Sans MS";
 		canvasContext.fillText("Player's score   : ",(canvas.width/2)-75,300);
-		canvasContext.fillText("AI's score 		     : ",(canvas.width/2)-75,350);
+		canvasContext.fillText("Computer's score 		     : ",(canvas.width/2)-75,350);
 		canvasContext.fillText(playerscore,(canvas.width/2)+135,300);
-		canvasContext.fillText(AIscore,(canvas.width/2)+135,350);
+		canvasContext.fillText(AIscore,(canvas.width/2)+205,350);
 
 		canvasContext.fillStyle = 'white';
 		canvasContext.font = "300 16px Georgia";
@@ -207,7 +211,7 @@ function draw(){ /*Drawing the whole game movement*/
 	if(AIscore>=4 && playerscore<=2){
 		canvasContext.fillStyle = 'red';
 		canvasContext.font = "700 italic 40px Comic Sans MS";
-		canvasContext.fillText("You are losing the game, stay focus!",canvas.width/2+70,200);
+		canvasContext.fillText("You are losing the game, stay focus!",canvas.width/2-170,200);
 	}
 
 	else if(AIscore<=3 && playerscore>=4){
